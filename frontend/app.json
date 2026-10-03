@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "MitraRoda Driver",
+    "slug": "mitraroda",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "mitraroda",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mitraroda.driver"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#f97316",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "package": "com.mitraroda.driver"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7dfc49ff-24ff-4994-8cb9-bd6017a7ee9c"
+      }
+    }
+  }
+}

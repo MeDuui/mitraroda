@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend API for MitraRoda Driver - Financial tracking app for Ojek Online drivers",
   "engines": {
-    "node": "18.x"
+    "node": ">=18"
   },
   "main": "server.js",
   "scripts": {

@@ -1,0 +1,76 @@
+Running "npm ci --include=dev" in /home/expo/workingdir/build directory
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: expo-modules-core@57.0.20
+npm warn Found: react-native-worklets@0.13.0
+npm warn node_modules/react-native-worklets
+npm warn   peerOptional react-native-worklets@"*" from @expo/ui@57.0.21
+npm warn   node_modules/expo-router/node_modules/@expo/ui
+npm warn     @expo/ui@"^57.0.21" from expo-router@57.0.24
+npm warn     node_modules/expo-router
+npm warn   1 more (react-native-reanimated)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional react-native-worklets@"^0.7.4 || ^0.8.0 || ^0.9.0 || ^0.10.0" from expo-modules-core@57.0.20
+npm warn node_modules/expo-modules-core
+npm warn   expo-modules-core@"~57.0.20" from expo@57.0.26
+npm warn   node_modules/expo
+npm warn
+npm warn Conflicting peer dependency: react-native-worklets@0.10.4
+npm warn node_modules/react-native-worklets
+npm warn   peerOptional react-native-worklets@"^0.7.4 || ^0.8.0 || ^0.9.0 || ^0.10.0" from expo-modules-core@57.0.20
+npm warn   node_modules/expo-modules-core
+npm warn     expo-modules-core@"~57.0.20" from expo@57.0.26
+npm warn     node_modules/expo
+npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: react-dom@19.3.0
+npm error Found: react@19.2.3
+npm error node_modules/react
+npm error   react@"19.2.3" from the root project
+npm error   peerOptional react@"*" from @expo/devtools@57.0.1
+npm error   node_modules/@expo/devtools
+npm error     @expo/devtools@"~57.0.1" from expo@57.0.26
+npm error     node_modules/expo
+npm error       expo@"~57.0.26" from the root project
+npm error       19 more (@expo/dom-webview, @expo/log-box, expo-constants, ...)
+npm error   57 more (@expo/dom-webview, @expo/log-box, ...)
+npm error
+npm error Could not resolve dependency:
+npm error peer react@"^19.3.0" from react-dom@19.3.0
+npm error node_modules/react-dom
+npm error   peerOptional react-dom@"*" from expo@57.0.26
+npm error   node_modules/expo
+npm error     expo@"~57.0.26" from the root project
+npm error     19 more (@expo/dom-webview, @expo/log-box, expo-constants, ...)
+npm error   peerOptional react-dom@"*" from @expo/router-server@57.0.11
+npm error   node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server
+npm error     @expo/router-server@"^57.0.11" from @expo/cli@57.0.27
+npm error     node_modules/expo/node_modules/@expo/cli
+npm error       @expo/cli@"^57.0.27" from expo@57.0.26
+npm error   15 more (expo-router, @expo/metro-runtime, @expo/ui, ...)
+npm error
+npm error Conflicting peer dependency: react@19.3.0
+npm error node_modules/react
+npm error   peer react@"^19.3.0" from react-dom@19.3.0
+npm error   node_modules/react-dom
+npm error     peerOptional react-dom@"*" from expo@57.0.26
+npm error     node_modules/expo
+npm error       expo@"~57.0.26" from the root project
+npm error       19 more (@expo/dom-webview, @expo/log-box, expo-constants, ...)
+npm error     peerOptional react-dom@"*" from @expo/router-server@57.0.11
+npm error     node_modules/expo/node_modules/@expo/cli/node_modules/@expo/router-server
+npm error       @expo/router-server@"^57.0.11" from @expo/cli@57.0.27
+npm error       node_modules/expo/node_modules/@expo/cli
+npm error         @expo/cli@"^57.0.27" from expo@57.0.26
+npm error     15 more (expo-router, @expo/metro-runtime, @expo/ui, ...)
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error /home/expo/.npm/_logs/2026-10-03T11_08_01_058Z-eresolve-report.txt
+npm error A complete log of this run can be found in: /home/expo/.npm/_logs/2026-10-03T11_08_01_058Z-debug-0.log
+npm ci --include=dev exited with non-zero code: 1
