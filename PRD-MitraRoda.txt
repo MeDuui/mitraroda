@@ -1,0 +1,108 @@
+# Product Requirements Document (PRD) & Design Brief
+## Proyek: MitraRoda Driver — Aplikasi Pencatatan Keuangan & Performa Driver Ojek Online (Android)
+
+---
+
+### 1. Executive Summary & Ringkasan Produk
+**MitraRoda Driver** adalah aplikasi pembukuan finansial mandiri dan pelacak performa harian yang dirancang khusus untuk pengemudi ojek online (*ojol*). Aplikasi ini berfungsi sebagai kalkulator pendapatan, buku kas harian, dan analisis operasional offline/online tanpa ketergantungan API perbankan langsung atau dompet digital (*e-wallet*). 
+
+Fokus utama produk adalah memberikan kendali penuh kepada pengemudi untuk mencatat uang masuk (tunai & non-tunai), menghitung laba bersih riil setelah dikurangi biaya operasional (bensin, makan, parkir, servis), serta memantau progres target harian secara intuitif dengan antarmuka yang bersih, cepat, dan mudah dibaca di luar ruangan (*outdoor-ready*).
+
+---
+
+### 2. Latar Belakang & Pernyataan Masalah (Problem Statement)
+1. **Pemasukan Kotor vs. Bersih yang Bias**: Pengemudi sering kali melihat saldo total di aplikasi penyedia layanan tanpa menghitung biaya riil harian (bensin, makan siang, parkir pelanggan, dan servis rutin), sehingga uang yang dibawa pulang ke rumah (*take-home pay*) sering tidak terprediksi.
+2. **Ketiadaan Hubungan dengan Rekening Bank**: Pengemudi membutuhkan alat pencatatan mandiri yang privat, cepat, dan tidak rumit dengan verifikasi perbankan, OTP WhatsApp yang rawan gagal, atau integrasi rekening yang berat.
+3. **Kebutuhan Akses Cepat di Jalan**: Antarmuka aplikasi harus dapat diakses dengan cepat, memiliki target sentuh (*touch target*) yang besar, kontras warna tinggi, dan bebas distraksi (tanpa emotikon, teks padat, atau navigasi bertumpuk).
+
+---
+
+### 3. Profil Pengguna (Target User Persona)
+* **Pengguna Utama**: Pengemudi Ojek Online roda dua / kurir logistik motor (usia 20–55 tahun).
+* **Karakteristik Penggunaan**:
+  * Menggunakan perangkat smartphone Android kelas *entry-to-mid level*.
+  * Mengoperasikan aplikasi saat berhenti di lampu merah atau tempat istirahat/pangkalan.
+  * Mengutamakan kecepatan input satu tangan dan kejelasan angka nominal pendapatan bersih.
+
+---
+
+### 4. Prinsip Desain & Visual Identity (Design System)
+* **Design System Token**: *Driver Velocity* (Mode Terang / Light Mode).
+* **Palet Warna Utama**:
+  * **Brand Orange (`#f97316`)**: Warna aksen utama pembawa semangat mobilitas, tombol aksi utama (CTA), indikator target, dan identitas brand.
+  * **Clean White (`#ffffff`) & Surface Neutral (`#faf8ff`, `#f2f3ff`)**: Latar belakang bersih dan kartu kontras tinggi untuk keterbacaan optimal di bawah terik matahari.
+  * **Dark Charcoal / Slate**: Tipografi dengan kontras tinggi untuk angka pendapatan dan label input.
+  * **Status Colors**: Hijau lembut (pemasukan/surplus), Merah/Oranye tua (pengeluaran/biaya operasional).
+* **Tipografi**: *Plus Jakarta Sans* — font sans-serif modern dengan keterbacaan tinggi pada angka dan tabel.
+* **Gaya Aset & Ikonografi**:
+  * Vektor SVG murni (*Pure SVG*) dengan garis proporsional, tanpa emotikon/emoji teks sama sekali.
+  * Sudut membulat modern (*Round Eight - rounded-xl/2xl*).
+
+---
+
+### 5. Arsitektur Informasi & Alur Halaman (Screen Architecture)
+
+#### A. Layar Registrasi & Autentikasi (Auth Flow)
+1. **Layar Masuk (Login Driver - MitraRoda)**:
+   * Input identitas sederhana: **Email atau Username** (bukan nomor WhatsApp).
+   * Input kata sandi dengan toggle visibilitas ikon mata SVG.
+   * Tombol masuk cepat dan opsi pendaftaran akun baru.
+2. **Layar Daftar Akun (Register Driver)**:
+   * Form 4 kolom terstruktur:
+     1. Username Driver (contoh: `budi_ojol`)
+     2. Alamat Email
+     3. Kata Sandi
+     4. Konfirmasi Kata Sandi
+   * Indikator proteksi keamanan akun & checkbox syarat/ketentuan.
+   * Tombol registrasi utama dan pendaftaran cepat via Google.
+
+#### B. Navigasi Utama Aplikasi (3-Tab Bottom Navbar)
+Aplikasi menggunakan bilah navigasi bawah yang ringkas (tanpa tab target terpisah, karena target telah terintegrasi di Beranda dan Riwayat):
+1. **Tab 1: Beranda (Home & Saldo Driver)**:
+   * Ringkasan saldo laba bersih hari ini (uang yang siap dibawa pulang).
+   * Tombol aksi pencatatan cepat: **"Catat Trip Baru"** dan **"Rekap Hari Ini"** (bebas fitur penarikan/top up perbankan).
+   * Widget kartu pantauan **Target Harian** aktif (progres pencapaian dalam rupiah & persentase).
+   * Daftar transaksi / tarikan trip terbaru hari ini.
+2. **Tab 2: Analisis (Grafik & Arus Kas Keuangan)**:
+   * Grafik lingkaran (*Donut/Circle Chart*) proporsi pemasukan kotor vs biaya operasional dengan angka di tengah lingkaran yang proporsional.
+   * Komparasi jenis pembayaran: Tunai (Cash) vs Non-Tunai (Dompet Driver Ojol).
+   * Kartu **Rincian Biaya Operasional** dengan spasi vertikal yang lega (Bahan Bakar, Makan, Parkir) serta tombol catat pengeluaran tambahan.
+   * Grafik tren jam produktif / jam narik tersibuk.
+3. **Tab 3: Riwayat (Transaksi & Capaian)**:
+   * Riwayat perjalanan dan order harian/mingguan yang terfilter rapi.
+   * Kartu pencapaian evaluasi target harian.
+   * Fitur ekspor ringkasan pembukuan (Format PDF / Teks WhatsApp).
+
+---
+
+### 6. Persyaratan Fungsional (Functional Requirements)
+1. **Manajemen Akun & Sesi**:
+   * Login & registrasi mandiri berbasis kredensial lokal/email & username.
+2. **Kalkulator & Input Catatan Harian**:
+   * Input cepat nominal argo trip, tip konsumen, dan jenis pembayaran (tunai/non-tunai).
+   * Input biaya operasional langsung (bensin, makan siang, karcis parkir, retribusi).
+3. **Kalkulasi Otomatis Laba Bersih**:
+   * `Laba Bersih = (Pemasukan Kotor + Tip) - Biaya Operasional`.
+4. **Monitoring Target & Milestone**:
+   * Penetapan target harian fleksibel (misal: target Rp 300.000 atau Rp 500.000/hari).
+   * Status target terupdate real-time setiap penambahan data trip.
+5. **Ekspor Data & Laporan**:
+   * Kemampuan membuat ringkasan teks atau file PDF pembukuan harian untuk dokumentasi pribadi driver.
+
+---
+
+### 7. Persyaratan Non-Fungsional (Non-Functional Requirements)
+* **Outdoor Usability**: Kontras rasio teks terhadap latar belakang minimal 4.5:1 (WCAG AA).
+* **Responsiveness**: Dioptimalkan untuk layar Android 360dp - 412dp (*mobile portrait*).
+* **Privacy & Keamanan Data**: Data pembukuan disimpan secara aman dan privat tanpa menghubungkan data rekening bank pribadi pengguna.
+* **Performa Ringan**: Komponen UI tidak membebani memori smartphone driver saat berpindah aplikasi antara GPS/aplikasi order dan MitraRoda.
+
+---
+
+### 8. Milestone Desain yang Telah Selesai
+* [x] Identitas Desain & Design Tokens (*Driver Velocity, Orange-White theme*).
+* [x] Halaman Masuk Driver (*Email/Username base*).
+* [x] Halaman Daftar Akun Baru (*Lengkap 4 kolom & keamanan*).
+* [x] Halaman Beranda (*Fokus buku kas & pencatatan mandiri*).
+* [x] Halaman Analisis (*Visual grafik lingkaran presisi & jarak komponen lega*).
+* [x] Halaman Riwayat & Capaian Target (*Integrasi laporan & tab bar 3 menu*).

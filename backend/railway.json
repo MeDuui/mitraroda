@@ -1,0 +1,8 @@
+{
+  "build": {
+    "builder": "heroku-20",
+    "engines": {
+      "node": "18.x"
+    }
+  }
+}
